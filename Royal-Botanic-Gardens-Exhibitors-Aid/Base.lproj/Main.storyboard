@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rGb-fs-XJQ">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gGM-dl-Mdx">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,17 +12,17 @@
             <objects>
                 <viewController title="Exhibition Details Screen" id="etU-9K-eCX" customClass="ExhibitionDetailsViewController" customModule="Royal_Botanic_Gardens_Exhibitors_Aid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k2w-v0-SOg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="74" translatesAutoresizingMaskIntoConstraints="NO" id="Z9Q-cT-ns0">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="Mux-j9-rTX">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Fq-vq-0EM">
-                                                <rect key="frame" x="0.0" y="0.0" width="193.66666666666666" height="95"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="232.66666666666666" height="95"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbr-j6-pIL">
                                                         <rect key="frame" x="0.0" y="0.0" width="49.666666666666664" height="20.333333333333332"/>
@@ -31,7 +31,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBE-BY-RYR">
-                                                        <rect key="frame" x="0.0" y="37.333333333333329" width="92.333333333333329" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="37.333333333333343" width="92.333333333333329" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="za5-bY-Hlv">
-                                                <rect key="frame" x="236.66666666666663" y="0.0" width="138.33333333333337" height="95"/>
+                                                <rect key="frame" x="275.66666666666669" y="0.0" width="138.33333333333331" height="95"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exhibitName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW6-Ga-6Sk">
                                                         <rect key="frame" x="0.0" y="0.0" width="138.33333333333334" height="20.333333333333332"/>
@@ -54,7 +54,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exhibitDescription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrD-O9-Ua9">
-                                                        <rect key="frame" x="0.0" y="37.333333333333329" width="138.33333333333334" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="37.333333333333343" width="138.33333333333334" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -70,18 +70,18 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ta6-gn-rzK">
-                                        <rect key="frame" x="0.0" y="169" width="375" height="521"/>
+                                        <rect key="frame" x="0.0" y="169" width="414" height="504"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="showPlantDetailsCell" rowHeight="100" id="cfT-kY-vHO" customClass="PlantTableViewCell" customModule="Royal_Botanic_Gardens_Exhibitors_Aid" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cfT-kY-vHO" id="YKr-fC-6Qd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="383" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="yW2-3j-IEM">
-                                                            <rect key="frame" x="15" y="11" width="326" height="78"/>
+                                                            <rect key="frame" x="20" y="11" width="355" height="78"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="R6z-GX-LDg">
                                                                     <rect key="frame" x="0.0" y="0.0" width="116.33333333333333" height="78"/>
@@ -113,10 +113,10 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfJ-P4-vJM">
-                                                                    <rect key="frame" x="183.33333333333337" y="0.0" width="142.66666666666663" height="78"/>
+                                                                    <rect key="frame" x="183.33333333333337" y="0.0" width="171.66666666666663" height="78"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plantImageURL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wu-K6-e5p">
-                                                                            <rect key="frame" x="28.333333333333307" y="31.999999999999996" width="86.333333333333314" height="14.333333333333332"/>
+                                                                            <rect key="frame" x="42.66666666666665" y="31.999999999999996" width="86.333333333333314" height="14.333333333333332"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O6c-dM-EgN"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Exhibition Details Screen" id="esG-jr-Ngk">
+                    <navigationItem key="navigationItem" title="Exhibition Details" id="esG-jr-Ngk">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="BAP-fD-9LM">
                             <connections>
                                 <segue destination="B9G-84-V2L" kind="show" id="UwE-q1-76D"/>
@@ -193,17 +193,17 @@
             <objects>
                 <viewController storyboardIdentifier="showPlanet" id="cHG-9x-P2b" customClass="PlantDetailsViewController" customModule="Royal_Botanic_Gardens_Exhibitors_Aid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nze-yr-HdY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oAB-af-hGs">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-VP-khn">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plantImageLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZZ-OC-nij">
-                                                <rect key="frame" x="124.33333333333331" y="173.33333333333334" width="126.66666666666669" height="20.333333333333343"/>
+                                                <rect key="frame" x="143.66666666666666" y="194.33333333333334" width="126.66666666666666" height="20.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -216,28 +216,28 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LJf-Vk-u5W">
-                                        <rect key="frame" x="0.0" y="367" width="375" height="367"/>
+                                        <rect key="frame" x="0.0" y="409" width="414" height="409"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plantNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6C-57-V5f">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="91.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="102.33333333333333"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plantScientificNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69c-Ww-b0p">
-                                                <rect key="frame" x="0.0" y="91.666666666666686" width="375" height="92"/>
+                                                <rect key="frame" x="0.0" y="102.33333333333337" width="414" height="102.33333333333331"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plantYearDiscoveredLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chE-5e-BYU">
-                                                <rect key="frame" x="0.0" y="183.66666666666663" width="375" height="91.666666666666686"/>
+                                                <rect key="frame" x="0.0" y="204.66666666666663" width="414" height="102"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plantFamilylabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LL3-zC-LlX">
-                                                <rect key="frame" x="0.0" y="275.33333333333337" width="375" height="91.666666666666686"/>
+                                                <rect key="frame" x="0.0" y="306.66666666666663" width="414" height="102.33333333333331"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -273,7 +273,7 @@
             <objects>
                 <viewController id="B9G-84-V2L" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mnr-kv-oWd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Soz-cG-sCq"/>
@@ -284,13 +284,125 @@
             </objects>
             <point key="canvasLocation" x="981" y="-1018"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Map-->
+        <scene sceneID="xTs-EZ-CzD">
+            <objects>
+                <viewController id="6Oo-Nx-ITK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vLb-TT-flM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ry4-HZ-swV"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="PvJ-pO-q1d"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2As-8J-LlS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1563" y="-2444"/>
+        </scene>
+        <!--All Exhibitions-->
+        <scene sceneID="ljs-jp-VEN">
+            <objects>
+                <tableViewController id="ep9-tX-AqR" customClass="AllExhibitionsTableViewController" customModule="Royal_Botanic_Gardens_Exhibitors_Aid" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="S84-nX-b8Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="exhibitionCell" rowHeight="80" id="nRu-aT-Alr" customClass="AllExhibitionsTableViewCell" customModule="Royal_Botanic_Gardens_Exhibitors_Aid" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nRu-aT-Alr" id="5RF-hv-301">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DVa-Qr-peu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="xzi-Eu-yoA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iconLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUz-Hn-QZO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="32"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtk-Dh-7vr">
+                                                            <rect key="frame" x="72.666666666666671" y="48" width="61.666666666666671" height="32"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="GUz-Hn-QZO" firstAttribute="centerX" secondItem="xzi-Eu-yoA" secondAttribute="centerX" id="2XB-OA-T3Z"/>
+                                                        <constraint firstItem="GUz-Hn-QZO" firstAttribute="leading" secondItem="xzi-Eu-yoA" secondAttribute="leading" id="Nvd-uA-cj7"/>
+                                                        <constraint firstAttribute="trailing" secondItem="GUz-Hn-QZO" secondAttribute="trailing" id="PWz-gG-1Tg"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="descriptionLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCj-o7-H8F">
+                                                    <rect key="frame" x="207" y="0.0" width="207" height="80"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DVa-Qr-peu" firstAttribute="leading" secondItem="5RF-hv-301" secondAttribute="leading" id="Uuy-Wu-PGZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="DVa-Qr-peu" secondAttribute="bottom" id="ZT0-T2-7Ed"/>
+                                        <constraint firstAttribute="trailing" secondItem="DVa-Qr-peu" secondAttribute="trailing" id="ux8-nZ-BZt"/>
+                                        <constraint firstItem="DVa-Qr-peu" firstAttribute="top" secondItem="5RF-hv-301" secondAttribute="top" id="vtn-2G-GQ1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="exhibitionCellDescriptionLabel" destination="NCj-o7-H8F" id="G0C-gx-9VI"/>
+                                    <outlet property="exhibitionCellIconLabel" destination="GUz-Hn-QZO" id="Ecj-HI-4ur"/>
+                                    <outlet property="exhibitionCellNameLabel" destination="gtk-Dh-7vr" id="6ng-dm-EBi"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ep9-tX-AqR" id="pan-H9-oqU"/>
+                            <outlet property="delegate" destination="ep9-tX-AqR" id="WYL-TZ-Ogz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="All Exhibitions" id="GRg-Ve-Jkf"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YEA-vt-dwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-571.01449275362324" y="-1777.2321428571429"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="aKY-PK-fMb">
+            <objects>
+                <tabBarController id="gGM-dl-Mdx" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zXC-4o-Po2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="6Oo-Nx-ITK" kind="relationship" relationship="viewControllers" id="BEE-6z-8RB"/>
+                        <segue destination="rGb-fs-XJQ" kind="relationship" relationship="viewControllers" id="NFU-eg-Cam"/>
+                        <segue destination="RYL-HB-LR0" kind="relationship" relationship="viewControllers" id="zDq-2G-cRx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gsu-Ql-7RT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2516" y="-2117"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="yrz-Cb-a1Y">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DRx-LA-r4h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rGb-fs-XJQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="w1d-Jo-xXu"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="v12-Yt-2de">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="v12-Yt-2de">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -298,9 +410,27 @@
                         <segue destination="etU-9K-eCX" kind="relationship" relationship="rootViewController" id="h6i-7S-c7g"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DRx-LA-r4h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-978.39999999999998" y="-689.40886699507394"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="ixq-nN-IdL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RYL-HB-LR0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="6U9-pC-7q7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SvD-qM-kqV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ep9-tX-AqR" kind="relationship" relationship="rootViewController" id="uFD-Tu-iMf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jt-Tx-9i9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1481.1594202898552" y="-1777.2321428571429"/>
         </scene>
     </scenes>
 </document>

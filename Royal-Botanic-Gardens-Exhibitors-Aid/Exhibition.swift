@@ -13,11 +13,18 @@ class Exhibition {
     var description: String?
     var location: String?
     var plants: [Plant]?
+    var icon: String?
     
     init(name: String, description: String, location: String, plants: [Plant]) {
         self.name = name
         self.description = description
         self.location = location
         self.plants = plants
+    }
+    
+    init(name: String, description: String, icon: String) {
+        self.name = name
+        self.description = description
+        self.icon = icon
     }
 }

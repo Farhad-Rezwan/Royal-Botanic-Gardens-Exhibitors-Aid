@@ -16,13 +16,29 @@ class ExhibitionDetailsViewController: UIViewController {
     @IBOutlet weak var plantsTableView: UITableView!
     
     var currentPlant: [Plant] = []
+    var exhibition: Exhibition?
     
+    var exhibitName: String?
+    var exhibitDescription: String?
+    var exhibitLocation: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         plantsTableView.delegate = self
         plantsTableView.dataSource = self
-
+        
+        exhibition = createExhibition()
         currentPlant = createExhibition().plants!
+
+        exhibitName = exhibition?.name
+        exhibitDescription = exhibition?.description
+        exhibitLocation = exhibition?.location
+        exhibitNameLabel.text = exhibitName
+        exhibitLocationLabel.text = exhibitLocation
+        exhibitDescriptionLabel.text = exhibitDescription
+
+        
     }
     
     func createExhibition() -> Exhibition {

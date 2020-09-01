@@ -17,6 +17,8 @@
 		FC831BC524F0827B00221C2D /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC831BC424F0827B00221C2D /* Plant.swift */; };
 		FC831BC824F08AA700221C2D /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC831BC724F08AA700221C2D /* PlantTableViewCell.swift */; };
 		FC831BCA24F09F3900221C2D /* PlantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC831BC924F09F3900221C2D /* PlantDetailsViewController.swift */; };
+		FCA325C824F0FFF3002AFF92 /* AllExhibitionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA325C724F0FFF3002AFF92 /* AllExhibitionsTableViewCell.swift */; };
+		FCA325CA24F111D9002AFF92 /* AllExhibitionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA325C924F111D9002AFF92 /* AllExhibitionsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		FC831BC424F0827B00221C2D /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		FC831BC724F08AA700221C2D /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
 		FC831BC924F09F3900221C2D /* PlantDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewController.swift; sourceTree = "<group>"; };
+		FCA325C724F0FFF3002AFF92 /* AllExhibitionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExhibitionsTableViewCell.swift; sourceTree = "<group>"; };
+		FCA325C924F111D9002AFF92 /* AllExhibitionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExhibitionsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				FC831BC424F0827B00221C2D /* Plant.swift */,
 				FC831BC724F08AA700221C2D /* PlantTableViewCell.swift */,
 				FC831BC924F09F3900221C2D /* PlantDetailsViewController.swift */,
+				FCA325C724F0FFF3002AFF92 /* AllExhibitionsTableViewCell.swift */,
+				FCA325C924F111D9002AFF92 /* AllExhibitionsTableViewController.swift */,
 			);
 			path = "Royal-Botanic-Gardens-Exhibitors-Aid";
 			sourceTree = "<group>";
@@ -150,12 +156,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA325CA24F111D9002AFF92 /* AllExhibitionsTableViewController.swift in Sources */,
 				FC04B19624ED220B00007216 /* AppDelegate.swift in Sources */,
 				FC831BC824F08AA700221C2D /* PlantTableViewCell.swift in Sources */,
 				FC831BC124F0817500221C2D /* ExhibitionDetailsViewController.swift in Sources */,
 				FC831BC524F0827B00221C2D /* Plant.swift in Sources */,
 				FC831BC324F0820A00221C2D /* Exhibition.swift in Sources */,
 				FC831BCA24F09F3900221C2D /* PlantDetailsViewController.swift in Sources */,
+				FCA325C824F0FFF3002AFF92 /* AllExhibitionsTableViewCell.swift in Sources */,
 				FC04B19824ED220B00007216 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
