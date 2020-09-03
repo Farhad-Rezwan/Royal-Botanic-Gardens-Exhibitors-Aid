@@ -8,29 +8,50 @@
 
 import UIKit
 
-class AllExhibitionsTableViewController: UITableViewController, UISearchResultsUpdating {
+class AllExhibitionsTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener {
+    
+    
     
     
     
     var exhibitions: [Exhibition] = []
     var tempExhibitions: [Exhibition] = []
+    
+    weak var databaseController: DatabaseProtocol?
+    var listenerType: ListenerType = .all
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        exhibitions = createExhibition()
-        tempExhibitions = createExhibition()
+//        exhibitions = createExhibition()
+//        tempExhibitions = createExhibition()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
+        
+        tempExhibitions = exhibitions
         
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Heroes"
+        searchController.searchBar.placeholder = "Exhibitions"
         navigationItem.searchController = searchController
         
         definesPresentationContext = true
         
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text?.lowercased() else {
             return
@@ -51,20 +72,30 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
     
     
     
-    
-    
-    func createExhibition() -> [Exhibition] {
-        var tempExhibitions: [Exhibition] = []
-        
-        let exhibition1 = Exhibition(name: "I dont care exhibition", description: "I realy dont care", icon: "No Icon")
-        let exhibition2 = Exhibition(name: "You dont care exhibition", description: "You realy dont care", icon: "Not sure ICON")
-        let exhibition3 = Exhibition(name: "We dont care exhibition", description: "We realy dont care", icon: "Unknown ICON")
-        
-        tempExhibitions.append(contentsOf: [exhibition1, exhibition2, exhibition3])
-
-        
-        return tempExhibitions
+    func onExhibitionChange(change: DatabaseChange, exhibitionPlants: [Plant]) {
+        // do nothing
     }
+    
+    func onPlantListChange(change: DatabaseChange, plants: [Plant]) {
+        // do nothing
+    }
+    
+    
+    
+    
+    
+//    func createExhibition() -> [Exhibition] {
+//        var tempExhibitions: [Exhibition] = []
+//
+//        let exhibition1 = Exhibition(name: "I dont care exhibition", description: "I realy dont care", icon: "No Icon")
+//        let exhibition2 = Exhibition(name: "You dont care exhibition", description: "You realy dont care", icon: "Not sure ICON")
+//        let exhibition3 = Exhibition(name: "We dont care exhibition", description: "We realy dont care", icon: "Unknown ICON")
+//
+//        tempExhibitions.append(contentsOf: [exhibition1, exhibition2, exhibition3])
+//
+//
+//        return tempExhibitions
+//    }
 
     // MARK: - Table view data source
 

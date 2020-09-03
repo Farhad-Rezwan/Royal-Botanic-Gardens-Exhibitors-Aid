@@ -20,7 +20,7 @@ class PlantTableViewCell: UITableViewCell {
     func setupPlant(plant: Plant) {
         plantNameLabel.text = plant.name
         plantScientificNameLabel.text = plant.scientificName
-        plantYearDiscoveredLabel.text = "Year: \(plant.yearDiscovered!)"
+        plantYearDiscoveredLabel.text = "Year: \(plant.yearDiscovered)"
         plantFamilyLabel.text = plant.family
         plantImageUrlLabel.text = plant.family
         

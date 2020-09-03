@@ -28,12 +28,12 @@ class ExhibitionDetailsViewController: UIViewController {
         plantsTableView.delegate = self
         plantsTableView.dataSource = self
         
-        exhibition = createExhibition()
-        currentPlant = createExhibition().plants!
+//        exhibition = createExhibition()
+//        currentPlant = createExhibition().plants!
 
         exhibitName = exhibition?.name
         exhibitDescription = exhibition?.description
-        exhibitLocation = exhibition?.location
+//        exhibitLocation = exhibition?.location
         exhibitNameLabel.text = exhibitName
         exhibitLocationLabel.text = exhibitLocation
         exhibitDescriptionLabel.text = exhibitDescription
@@ -41,21 +41,21 @@ class ExhibitionDetailsViewController: UIViewController {
         
     }
     
-    func createExhibition() -> Exhibition {
-        var tempExhibition: Exhibition
-        
-        let plant1 = Plant(name: "Plant A", scientificName: "PA", yearDiscovered: 1990, family: "AFamily", imageURL: "www.A.com")
-        let plant2 = Plant(name: "Plant B", scientificName: "PB", yearDiscovered: 1991, family: "BFamily", imageURL: "www.B.com")
-        let plant3 = Plant(name: "Plant C", scientificName: "PC", yearDiscovered: 1992, family: "CFamily", imageURL: "www.C.com")
-        let plant4 = Plant(name: "Plant D", scientificName: "PD", yearDiscovered: 1994, family: "DFamily", imageURL: "www.D.com")
-        
-        let exhibition1 = Exhibition(name: "I dont care exhibition", description: "I realy dont care", location: "Lucey if i care", plants: [plant1, plant2, plant3, plant4])
-        
-        tempExhibition = exhibition1
-        
-        
-        return tempExhibition
-    }
+//    func createExhibition() -> Exhibition {
+//        var tempExhibition: Exhibition
+//
+//        let plant1 = Plant(name: "Plant A", scientificName: "PA", yearDiscovered: 1990, family: "AFamily", imageURL: "www.A.com")
+//        let plant2 = Plant(name: "Plant B", scientificName: "PB", yearDiscovered: 1991, family: "BFamily", imageURL: "www.B.com")
+//        let plant3 = Plant(name: "Plant C", scientificName: "PC", yearDiscovered: 1992, family: "CFamily", imageURL: "www.C.com")
+//        let plant4 = Plant
+//
+//        let exhibition1 = Exhibition(name: "I dont care exhibition", description: "I realy dont care", location: "Lucey if i care", plants: [plant1, plant2, plant3, plant4])
+//
+//        tempExhibition = exhibition1
+//
+//
+//        return tempExhibition
+//    }
     
     
 

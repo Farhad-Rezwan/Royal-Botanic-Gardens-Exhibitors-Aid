@@ -20,7 +20,7 @@ class PlantDetailsViewController: UIViewController {
     
     var name: String?
     var scientificName: String?
-    var yearDiscovered: Int?
+    var yearDiscovered: Int16?
     var family: String?
     var imageURL: String?
     
@@ -32,7 +32,7 @@ class PlantDetailsViewController: UIViewController {
         scientificName = plant?.scientificName
         yearDiscovered = plant?.yearDiscovered
         family = plant?.family
-        imageURL = plant?.imageURL
+        imageURL = plant?.imageOfPlant
         
         plantNameLabel.text = name
         plantScientificNameLabel.text = scientificName
