@@ -61,17 +61,19 @@ class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
     
     
     func onExhibitionPlantsChange(change: DatabaseChange, exhibitionPlants: [Plant]) {
+        currentPlant = exhibitionPlants
     }
     
     func onPlantListChange(change: DatabaseChange, plants: [Plant]) {
-        //
+        
     }
     
     func onExhibitionChange(change: DatabaseChange, exhibitions: [Exhibition]) {
-        print(exhibitions.count)
-        exhibition = exhibitions[1]
+        exhibition = exhibitions[9]
+        databaseController?.setDefaultExhibit(name: exhibition!.name ?? "")
         defaultExhibitionName = "\(exhibition!.name ?? "")"
         print(defaultExhibitionName)
+        currentPlant = exhibition?.plants?.allObjects as! [Plant]
     }
 }
 

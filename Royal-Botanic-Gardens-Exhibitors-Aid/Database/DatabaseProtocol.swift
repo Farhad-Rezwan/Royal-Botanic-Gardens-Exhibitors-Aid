@@ -46,4 +46,6 @@ protocol DatabaseProtocol: AnyObject {
     func removePlantFromExhibition(plant: Plant, exhibition: Exhibition)
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
+    
+    func setDefaultExhibit(name: String)
 }

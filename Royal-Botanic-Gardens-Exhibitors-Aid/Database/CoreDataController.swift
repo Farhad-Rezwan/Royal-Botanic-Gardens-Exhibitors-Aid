@@ -10,10 +10,8 @@ import UIKit
 import CoreData
 
 class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, DatabaseProtocol {
-
-
     
-    let DEFAULT_EXHIBITION_NAME = "Default Exhibition"
+    var DEFAULT_EXHIBITION_NAME = "Default Exhibition"
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
     
@@ -31,12 +29,7 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         }
         
         super.init()
-            
-        if fetchAllPlants().count == 0 {
-//            createDefaultEntries()
-            
-        }
-        
+
         if fetchAllExhibitions().count == 0 {
             createDefaultEntries2()
         }
@@ -112,13 +105,14 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
     
     func addPlantToExhibit(plant: Plant, exhibition: Exhibition) -> plantsAddableOrNot {
 
-        guard let plantContain = exhibition.plants, plantContain.contains(plant) == false else {
-            return .alreadyContainsSamePlant
-        }
-        
-        guard let plantHas = exhibition.plants, plantHas.count > 3 else {
-            return .lessThanThree
-        }
+//        guard let plantContain = exhibition.plants, plantContain.contains(plant) == false else {
+//            return .alreadyContainsSamePlant
+//        }
+//
+//        guard let plantHas = exhibition.plants, plantHas.count > 3 else {
+//            return .lessThanThree
+//        }
+//        print("Hoyse")
         exhibition.addToPlants(plant)
         return.addable
     }
@@ -156,6 +150,13 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         saveContext()
         listeners.removeDelegate(listener)
         
+    }
+    
+    /// Sets default exhibit to be shown in the exhibition detals page.
+    /// Helps to get the values of exhibitions table view data
+    /// - Parameter name: name of the exhibition
+    func setDefaultExhibit(name: String) {
+        DEFAULT_EXHIBITION_NAME = name
     }
 
     // MARK: - Fetched Results Controller Protocol Functions
@@ -264,12 +265,6 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
     }
     
     /// Adds default entries for the exhibitions
-//    func createDefaultEntries2() {
-//
-//        saveContext()
-//
-//    }
-//
     func createDefaultEntries2() {
         let p1 = addPlant(name: "Plant A", family: "Plant Family A", imageOfPlant: "Imapge of Plant A", scientificName: "Scientific Name of Plant A", yearDiscovered: 1994)
         let p2 = addPlant(name: "Plant B", family: "Plant Family B", imageOfPlant: "Imapge of Plant B", scientificName: "Scientific Name of Plant B", yearDiscovered: 1995)
@@ -305,35 +300,35 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
 
         let _ = addPlantToExhibit(plant: p7, exhibition: ex3)
         let _ = addPlantToExhibit(plant: p8, exhibition: ex3)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex3)
+        let _ = addPlantToExhibit(plant: p9, exhibition: ex3)
 
         let _ = addPlantToExhibit(plant: p1, exhibition: ex4)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex4)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex4)
+        let _ = addPlantToExhibit(plant: p2, exhibition: ex4)
+        let _ = addPlantToExhibit(plant: p3, exhibition: ex4)
 
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex5)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex5)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex5)
+        let _ = addPlantToExhibit(plant: p4, exhibition: ex5)
+        let _ = addPlantToExhibit(plant: p5, exhibition: ex5)
+        let _ = addPlantToExhibit(plant: p6, exhibition: ex5)
 
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex6)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex6)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex6)
+        let _ = addPlantToExhibit(plant: p7, exhibition: ex6)
+        let _ = addPlantToExhibit(plant: p8, exhibition: ex6)
+        let _ = addPlantToExhibit(plant: p9, exhibition: ex6)
 
         let _ = addPlantToExhibit(plant: p1, exhibition: ex7)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex7)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex7)
+        let _ = addPlantToExhibit(plant: p2, exhibition: ex7)
+        let _ = addPlantToExhibit(plant: p3, exhibition: ex7)
 
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex8)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex8)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex8)
+        let _ = addPlantToExhibit(plant: p4, exhibition: ex8)
+        let _ = addPlantToExhibit(plant: p5, exhibition: ex8)
+        let _ = addPlantToExhibit(plant: p6, exhibition: ex8)
 
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex9)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex9)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex9)
+        let _ = addPlantToExhibit(plant: p7, exhibition: ex9)
+        let _ = addPlantToExhibit(plant: p8, exhibition: ex9)
+        let _ = addPlantToExhibit(plant: p9, exhibition: ex9)
 
         let _ = addPlantToExhibit(plant: p1, exhibition: ex10)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex10)
-        let _ = addPlantToExhibit(plant: p1, exhibition: ex10)
+        let _ = addPlantToExhibit(plant: p2, exhibition: ex10)
+        let _ = addPlantToExhibit(plant: p3, exhibition: ex10)
         saveContext()
     }
 
