@@ -33,12 +33,11 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         super.init()
             
         if fetchAllPlants().count == 0 {
-            createDefaultEntries()
+//            createDefaultEntries()
             
         }
         
         if fetchAllExhibitions().count == 0 {
-            print("Hoyse naki??")
             createDefaultEntries2()
         }
         
@@ -48,7 +47,7 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
     
     // MARK: - Lazy Initialization of Default team
     lazy var defaultExhibition: [Exhibition] = {
-        print("Hocchey na")
+        print("Lazy Load Hoyse")
         var exhibitions = [Exhibition] ()
         
         let request: NSFetchRequest<Exhibition> = Exhibition.fetchRequest()
@@ -61,10 +60,8 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
             print("Fetch Request Failed: \(error)")
         }
         
-        print("Hocchey na")
-        
+
         if exhibitions.count == 0 {
-            print("Hocchey?")
             return [addExhibition(name: DEFAULT_EXHIBITION_NAME, desc: "Default Description", exhibitionLat: 121212.1212, exhibitionLon: 1212.1212, icon: "Default ICON")]
         }
         
@@ -113,13 +110,17 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         
     }
     
-    func addPlantToExhibit(plant: Plant, exhibition: Exhibition) -> Bool {
-        guard let plants = exhibition.plants, plants.contains(plant) == false, plants.count < 3 else {
-                return false
-            }
+    func addPlantToExhibit(plant: Plant, exhibition: Exhibition) -> plantsAddableOrNot {
+
+        guard let plantContain = exhibition.plants, plantContain.contains(plant) == false else {
+            return .alreadyContainsSamePlant
+        }
         
+        guard let plantHas = exhibition.plants, plantHas.count > 3 else {
+            return .lessThanThree
+        }
         exhibition.addToPlants(plant)
-        return true
+        return.addable
     }
 
     func deletePlant(plant: Plant) {
@@ -137,12 +138,16 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
         
-        if listener.listenerType == .exhibition || listener.listenerType == .all {
-            listener.onExhibitionChange(change: .update, exhibitionPlants: fetchFromExhibitPlants())
+        if listener.listenerType == .exhibitionPlants || listener.listenerType == .all {
+            listener.onExhibitionPlantsChange(change: .update, exhibitionPlants: fetchFromExhibitPlants())
         }
         
         if listener.listenerType == .plants || listener.listenerType == .all {
             listener.onPlantListChange(change: .update, plants: fetchAllPlants())
+        }
+        
+        if listener.listenerType == .exhibition || listener.listenerType == .all {
+            listener.onExhibitionChange(change: .update, exhibitions: fetchAllExhibitions())
         }
         
     }
@@ -165,8 +170,8 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
             }
         } else if controller == exhibitionPlantsFetchedResultsController {
             listeners.invoke { (listener) in
-                if listener.listenerType == .exhibition  || listener.listenerType == .all {
-                    listener.onExhibitionChange(change: .update, exhibitionPlants: fetchFromExhibitPlants())
+                if listener.listenerType == .exhibitionPlants  || listener.listenerType == .all {
+                    listener.onExhibitionPlantsChange(change: .update, exhibitionPlants: fetchFromExhibitPlants())
                 }
             }
         }
@@ -201,6 +206,8 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         return exhibitions
     }
     
+    /// Fetches all plants
+    /// - Returns: returns list of plants
     func fetchAllPlants() -> [Plant] {
         
         if allPlantsFetchResultsController == nil {
@@ -256,23 +263,80 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         return plants
     }
     
+    /// Adds default entries for the exhibitions
+//    func createDefaultEntries2() {
+//
+//        saveContext()
+//
+//    }
+//
     func createDefaultEntries2() {
-        let _ = addExhibition(name: "Exhibition A", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
-    
-        print("Ha hoyse")
+        let p1 = addPlant(name: "Plant A", family: "Plant Family A", imageOfPlant: "Imapge of Plant A", scientificName: "Scientific Name of Plant A", yearDiscovered: 1994)
+        let p2 = addPlant(name: "Plant B", family: "Plant Family B", imageOfPlant: "Imapge of Plant B", scientificName: "Scientific Name of Plant B", yearDiscovered: 1995)
+        let p3 = addPlant(name: "Plant C", family: "Plant Family C", imageOfPlant: "Imapge of Plant C", scientificName: "Scientific Name of Plant C", yearDiscovered: 1996)
+        let p4 = addPlant(name: "Plant D", family: "Plant Family D", imageOfPlant: "Imapge of Plant D", scientificName: "Scientific Name of Plant D", yearDiscovered: 1997)
+        let p5 = addPlant(name: "Plant E", family: "Plant Family E", imageOfPlant: "Imapge of Plant E", scientificName: "Scientific Name of Plant E", yearDiscovered: 1998)
+        let p6 = addPlant(name: "Plant F", family: "Plant Family F", imageOfPlant: "Imapge of Plant F", scientificName: "Scientific Name of Plant F", yearDiscovered: 1999)
+        let p7 = addPlant(name: "Plant G", family: "Plant Family G", imageOfPlant: "Imapge of Plant G", scientificName: "Scientific Name of Plant G", yearDiscovered: 2000)
+        let p8 = addPlant(name: "Plant H", family: "Plant Family H", imageOfPlant: "Imapge of Plant H", scientificName: "Scientific Name of Plant H", yearDiscovered: 2001)
+        let p9 = addPlant(name: "Plant I", family: "Plant Family I", imageOfPlant: "Imapge of Plant I", scientificName: "Scientific Name of Plant I", yearDiscovered: 2002)
+
+        var plants: [Plant] = []
+        plants.append(contentsOf: [p1,p2,p3,p4,p5,p6,p7,p8,p9])
+
+        let ex1 = addExhibition(name: "Exhibition a", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex2 = addExhibition(name: "Exhibition b", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex3 = addExhibition(name: "Exhibition c", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex4 = addExhibition(name: "Exhibition d", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex5 = addExhibition(name: "Exhibition e", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex6 = addExhibition(name: "Exhibition f", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex7 = addExhibition(name: "Exhibition g", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex8 = addExhibition(name: "Exhibition h", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex9 = addExhibition(name: "Exhibition i", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex10 = addExhibition(name: "Exhibition j", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex1)
+        let _ = addPlantToExhibit(plant: p2, exhibition: ex1)
+        let _ = addPlantToExhibit(plant: p3, exhibition: ex1)
+
+        let _ = addPlantToExhibit(plant: p4, exhibition: ex2)
+        let _ = addPlantToExhibit(plant: p5, exhibition: ex2)
+        let _ = addPlantToExhibit(plant: p6, exhibition: ex2)
+
+        let _ = addPlantToExhibit(plant: p7, exhibition: ex3)
+        let _ = addPlantToExhibit(plant: p8, exhibition: ex3)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex3)
+
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex4)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex4)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex4)
+
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex5)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex5)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex5)
+
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex6)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex6)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex6)
+
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex7)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex7)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex7)
+
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex8)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex8)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex8)
+
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex9)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex9)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex9)
+
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex10)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex10)
+        let _ = addPlantToExhibit(plant: p1, exhibition: ex10)
+        saveContext()
     }
-    
-    func createDefaultEntries() {
-        let _ = addPlant(name: "Plant A", family: "Plant Family A", imageOfPlant: "Imapge of Plant A", scientificName: "Scientific Name of Plant A", yearDiscovered: 1994)
-        let _ = addPlant(name: "Plant B", family: "Plant Family B", imageOfPlant: "Imapge of Plant B", scientificName: "Scientific Name of Plant B", yearDiscovered: 1995)
-        let _ = addPlant(name: "Plant C", family: "Plant Family C", imageOfPlant: "Imapge of Plant C", scientificName: "Scientific Name of Plant C", yearDiscovered: 1996)
-        let _ = addPlant(name: "Plant D", family: "Plant Family D", imageOfPlant: "Imapge of Plant D", scientificName: "Scientific Name of Plant D", yearDiscovered: 1997)
-        let _ = addPlant(name: "Plant E", family: "Plant Family E", imageOfPlant: "Imapge of Plant E", scientificName: "Scientific Name of Plant E", yearDiscovered: 1998)
-        let _ = addPlant(name: "Plant F", family: "Plant Family F", imageOfPlant: "Imapge of Plant F", scientificName: "Scientific Name of Plant F", yearDiscovered: 1999)
-        let _ = addPlant(name: "Plant G", family: "Plant Family G", imageOfPlant: "Imapge of Plant G", scientificName: "Scientific Name of Plant G", yearDiscovered: 2000)
-        let _ = addPlant(name: "Plant H", family: "Plant Family H", imageOfPlant: "Imapge of Plant H", scientificName: "Scientific Name of Plant H", yearDiscovered: 2001)
-        let _ = addPlant(name: "Plant I", family: "Plant Family I", imageOfPlant: "Imapge of Plant I", scientificName: "Scientific Name of Plant I", yearDiscovered: 2002)
-    }
+
      
     
     

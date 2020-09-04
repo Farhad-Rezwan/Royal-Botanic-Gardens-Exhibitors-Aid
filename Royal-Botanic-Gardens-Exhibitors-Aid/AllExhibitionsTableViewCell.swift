@@ -19,8 +19,7 @@ class AllExhibitionsTableViewCell: UITableViewCell {
         exhibitionCellIconLabel.text = exhibition.name
         exhibitionCellNameLabel.text = exhibition.icon
         exhibitionCellDescriptionLabel.text = exhibition.description
-        
-        
+
     }
     override func awakeFromNib() {
         super.awakeFromNib()

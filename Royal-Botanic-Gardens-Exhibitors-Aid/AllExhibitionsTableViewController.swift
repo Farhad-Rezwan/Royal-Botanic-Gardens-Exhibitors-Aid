@@ -9,10 +9,9 @@
 import UIKit
 
 class AllExhibitionsTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener {
+    var defaultExhibitionName: String = ""
     
-    
-    
-    
+
     
     var exhibitions: [Exhibition] = []
     var tempExhibitions: [Exhibition] = []
@@ -59,7 +58,10 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
         
         if searchText.count > 0 {
             tempExhibitions = exhibitions.filter({(exhibition: Exhibition) -> Bool in
-                return (exhibition.name?.lowercased().contains(searchText))!
+                guard let name = exhibition.name else {
+                    return false
+                }
+                return name.lowercased().contains(searchText)
             })
         } else {
             tempExhibitions = exhibitions
@@ -70,15 +72,7 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
         
     }
     
-    
-    
-    func onExhibitionChange(change: DatabaseChange, exhibitionPlants: [Plant]) {
-        // do nothing
-    }
-    
-    func onPlantListChange(change: DatabaseChange, plants: [Plant]) {
-        // do nothing
-    }
+   
     
     
     
@@ -110,9 +104,8 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let exhibition = exhibitions[indexPath.row]
-        
         let exhibitionCell = tableView.dequeueReusableCell(withIdentifier: "exhibitionCell") as! AllExhibitionsTableViewCell
+        let exhibition = tempExhibitions[indexPath.row]
         
         exhibitionCell.setupExhibition(exhibition: exhibition)
         
@@ -120,6 +113,20 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
         
         return exhibitionCell
     }
+    
+    
+    func onExhibitionChange(change: DatabaseChange, exhibitions: [Exhibition]) {
+           self.exhibitions = exhibitions
+           updateSearchResults(for: navigationItem.searchController!)
+       }
+       
+       func onExhibitionPlantsChange(change: DatabaseChange, exhibitionPlants: [Plant]) {
+           // do nothing
+       }
+       
+       func onPlantListChange(change: DatabaseChange, plants: [Plant]) {
+           // do nothing
+       }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

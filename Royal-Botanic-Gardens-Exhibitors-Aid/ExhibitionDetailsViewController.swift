@@ -8,7 +8,14 @@
 
 import UIKit
 
-class ExhibitionDetailsViewController: UIViewController {
+class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
+    
+    var defaultExhibitionName: String = ""
+    
+    var listenerType: ListenerType = .all
+    
+    
+    
     @IBOutlet weak var exhibitNameLabel: UILabel!
     @IBOutlet weak var exhibitDescriptionLabel: UILabel!
     @IBOutlet weak var exhibitLocationLabel: UILabel!
@@ -18,50 +25,57 @@ class ExhibitionDetailsViewController: UIViewController {
     var currentPlant: [Plant] = []
     var exhibition: Exhibition?
     
-    var exhibitName: String?
-    var exhibitDescription: String?
-    var exhibitLocation: String?
+    
+    weak var databaseController: DatabaseProtocol?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
+        
         plantsTableView.delegate = self
         plantsTableView.dataSource = self
         
-//        exhibition = createExhibition()
-//        currentPlant = createExhibition().plants!
-
-        exhibitName = exhibition?.name
-        exhibitDescription = exhibition?.description
-//        exhibitLocation = exhibition?.location
-        exhibitNameLabel.text = exhibitName
-        exhibitLocationLabel.text = exhibitLocation
-        exhibitDescriptionLabel.text = exhibitDescription
-
+        
         
     }
     
-//    func createExhibition() -> Exhibition {
-//        var tempExhibition: Exhibition
-//
-//        let plant1 = Plant(name: "Plant A", scientificName: "PA", yearDiscovered: 1990, family: "AFamily", imageURL: "www.A.com")
-//        let plant2 = Plant(name: "Plant B", scientificName: "PB", yearDiscovered: 1991, family: "BFamily", imageURL: "www.B.com")
-//        let plant3 = Plant(name: "Plant C", scientificName: "PC", yearDiscovered: 1992, family: "CFamily", imageURL: "www.C.com")
-//        let plant4 = Plant
-//
-//        let exhibition1 = Exhibition(name: "I dont care exhibition", description: "I realy dont care", location: "Lucey if i care", plants: [plant1, plant2, plant3, plant4])
-//
-//        tempExhibition = exhibition1
-//
-//
-//        return tempExhibition
-//    }
-    
-    
+    override func viewWillAppear(_ animated: Bool) {
+        databaseController?.addListener(listener: self)
+        
+        
+        if exhibition != nil {
+            exhibitNameLabel.text = "name: \(exhibition!.name ?? "Nil")"
+            exhibitDescriptionLabel.text = "name: \(exhibition!.desc ?? "Nil")"
+            exhibitLocationLabel.text = "name: \(String(exhibition!.exhibitionLat))" + "name: \(String(exhibition!.exhibitionLat))"
 
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        databaseController?.removeListener(listener: self)
+    }
+    
+    
+    
+    func onExhibitionPlantsChange(change: DatabaseChange, exhibitionPlants: [Plant]) {
+    }
+    
+    func onPlantListChange(change: DatabaseChange, plants: [Plant]) {
+        //
+    }
+    
+    func onExhibitionChange(change: DatabaseChange, exhibitions: [Exhibition]) {
+        print(exhibitions.count)
+        exhibition = exhibitions[1]
+        defaultExhibitionName = "\(exhibition!.name ?? "")"
+        print(defaultExhibitionName)
+    }
 }
 
-extension ExhibitionDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+extension ExhibitionDetailsViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentPlant.count
     }
