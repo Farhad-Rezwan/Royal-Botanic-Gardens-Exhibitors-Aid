@@ -14,7 +14,8 @@ class CreateExhibitionViewController: UIViewController {
     
     @IBOutlet weak var exhibitionNameTextField: UITextField!
     @IBOutlet weak var exhibitionDescriptionTextView: UITextView!
-
+    @IBOutlet weak var useCurrentLocationButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

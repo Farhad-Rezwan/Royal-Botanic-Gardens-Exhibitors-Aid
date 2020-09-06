@@ -290,7 +290,7 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         var plants: [Plant] = []
         plants.append(contentsOf: [p1,p2,p3,p4,p5,p6,p7,p8,p9])
 
-        let ex1 = addExhibition(name: "Exhibition a", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
+        let ex1 = addExhibition(name: "Exhibition a", desc: "Description A", exhibitionLat: -37.877623, exhibitionLon: 145.045374, icon: "Icon A")
         let ex2 = addExhibition(name: "Exhibition b", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
         let ex3 = addExhibition(name: "Exhibition c", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
         let ex4 = addExhibition(name: "Exhibition d", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")

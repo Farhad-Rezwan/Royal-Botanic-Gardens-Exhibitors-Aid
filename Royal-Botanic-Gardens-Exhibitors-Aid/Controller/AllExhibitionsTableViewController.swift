@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import MapKit
 
-class AllExhibitionsTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener {
+class AllExhibitionsTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener{
+    
+    weak var mapViewController: MapViewController?
+    var locationList = [LocationAnnotation]()
+    
+    
+    
     var defaultExhibitionName: String = ""
     
 
@@ -23,8 +30,9 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        exhibitions = createExhibition()
-//        tempExhibitions = createExhibition()
+        
+        loadLocation()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
@@ -74,7 +82,17 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
     
    
     
-    
+    func loadLocation() {
+        var location = LocationAnnotation(title: "Monash University - Caulfield", subtitle: "The Caulfield campus of the University", lat: -37.877623, lon: 145.045374)
+        locationList.append(location)
+        
+        mapViewController?.mapView.addAnnotation(location)
+        
+        location = LocationAnnotation(title: "Monash University - Clayton", subtitle: "The Clayton campus of the University", lat: -37.9105238, lon: 145.1362182)
+        
+        locationList.append(location)
+        mapViewController?.mapView.addAnnotation(location)
+    }
     
     
     
@@ -114,6 +132,14 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
         return exhibitionCell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mapViewController?.focusOn(annotation: self.locationList[indexPath.row])
+        
+        if let mapVC = mapViewController {
+            splitViewController?.showDetailViewController(mapVC, sender: nil)
+        }
+    }
+    
     
     func onExhibitionChange(change: DatabaseChange, exhibitions: [Exhibition]) {
            self.exhibitions = exhibitions
@@ -127,6 +153,19 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
        func onPlantListChange(change: DatabaseChange, plants: [Plant]) {
            // do nothing
        }
+    
+    
+    
+    
+    
+    
+    // MARK: - New Location Delegate Function
+    
+    func locationAnnotationAdded(annotation: LocationAnnotation) {
+        locationList.append(annotation)
+        tableView.insertRows(at: [IndexPath(row: locationList.count - 1, section: 0)], with: .automatic)
+        mapViewController?.mapView.addAnnotation(annotation)
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gGM-dl-Mdx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="roP-8f-pVX">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="74" translatesAutoresizingMaskIntoConstraints="NO" id="Z9Q-cT-ns0">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="Mux-j9-rTX">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
@@ -70,7 +70,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ta6-gn-rzK">
-                                        <rect key="frame" x="0.0" y="169" width="414" height="504"/>
+                                        <rect key="frame" x="0.0" y="169" width="414" height="553"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="showPlantDetailsCell" rowHeight="100" id="cfT-kY-vHO" customClass="PlantTableViewCell" customModule="Royal_Botanic_Gardens_Exhibitors_Aid" customModuleProvider="target">
@@ -291,22 +291,6 @@
             </objects>
             <point key="canvasLocation" x="2443" y="-354"/>
         </scene>
-        <!--Map-->
-        <scene sceneID="xTs-EZ-CzD">
-            <objects>
-                <viewController id="6Oo-Nx-ITK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vLb-TT-flM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="Ry4-HZ-swV"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="PvJ-pO-q1d"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2As-8J-LlS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1052" y="-2506"/>
-        </scene>
         <!--All Exhibitions-->
         <scene sceneID="ljs-jp-VEN">
             <objects>
@@ -379,7 +363,7 @@
                     <navigationItem key="navigationItem" title="All Exhibitions" id="GRg-Ve-Jkf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nJc-EG-2PV">
                             <connections>
-                                <segue destination="UD1-4Q-e1n" kind="show" id="k9x-M4-gAo"/>
+                                <segue destination="UD1-4Q-e1n" kind="show" identifier="addExhibitionSegue" id="k9x-M4-gAo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -387,25 +371,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEA-vt-dwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="238" y="-1788"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="aKY-PK-fMb">
-            <objects>
-                <tabBarController id="gGM-dl-Mdx" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zXC-4o-Po2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="6Oo-Nx-ITK" kind="relationship" relationship="viewControllers" id="BEE-6z-8RB"/>
-                        <segue destination="rGb-fs-XJQ" kind="relationship" relationship="viewControllers" id="NFU-eg-Cam"/>
-                        <segue destination="RYL-HB-LR0" kind="relationship" relationship="viewControllers" id="zDq-2G-cRx"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gsu-Ql-7RT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2516" y="-2117"/>
         </scene>
         <!--Item-->
         <scene sceneID="yrz-Cb-a1Y">
@@ -426,24 +391,63 @@
             </objects>
             <point key="canvasLocation" x="-978.39999999999998" y="-689.40886699507394"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="ixq-nN-IdL">
+        <!--Map View Controller-->
+        <scene sceneID="faS-gJ-Kpt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RYL-HB-LR0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="6U9-pC-7q7"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SvD-qM-kqV">
+                <viewController id="fD0-50-a8U" customClass="MapViewController" customModule="Royal_Botanic_Gardens_Exhibitors_Aid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zkp-1B-hiV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lfY-d8-Hvz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lfY-d8-Hvz" firstAttribute="trailing" secondItem="zkp-1B-hiV" secondAttribute="trailing" id="Ey6-Q5-OEc"/>
+                            <constraint firstItem="lfY-d8-Hvz" firstAttribute="top" secondItem="zkp-1B-hiV" secondAttribute="top" id="mBf-wC-kPn"/>
+                            <constraint firstItem="lfY-d8-Hvz" firstAttribute="leading" secondItem="zkp-1B-hiV" secondAttribute="leading" id="qhm-n5-cef"/>
+                            <constraint firstAttribute="bottom" secondItem="lfY-d8-Hvz" secondAttribute="bottom" id="ycD-5M-nzt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pet-o4-v2U"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="lfY-d8-Hvz" id="8gj-8p-Zp8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u8h-3z-f3J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2914" y="-1649"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NAU-Xi-NUO">
+            <objects>
+                <navigationController id="GfZ-jd-scX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1hP-F5-gP2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ep9-tX-AqR" kind="relationship" relationship="rootViewController" id="uFD-Tu-iMf"/>
+                        <segue destination="ep9-tX-AqR" kind="relationship" relationship="rootViewController" id="Dyw-h8-emA"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3jt-Tx-9i9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7j-ZI-Er9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1052" y="-1709"/>
+            <point key="canvasLocation" x="-2849" y="-2768"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="V5M-2W-iP9">
+            <objects>
+                <splitViewController id="roP-8f-pVX" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="GfZ-jd-scX" kind="relationship" relationship="masterViewController" id="LM2-AH-eo3"/>
+                        <segue destination="fD0-50-a8U" kind="relationship" relationship="detailViewController" id="kY5-7b-JE5"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GJ5-ZL-KeA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3766" y="-2378"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5zW-wt-e3W">
@@ -687,7 +691,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ed2-tk-ieU">
                                         <rect key="frame" x="0.0" y="137.66666666666666" width="382" height="127.99999999999997"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -695,7 +699,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sva-Pb-96x">
                                         <rect key="frame" x="0.0" y="286.66666666666669" width="382" height="30"/>
                                         <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Select Location">
+                                        <state key="normal" title="Select Current or Pop Location">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -740,6 +744,7 @@
                     <connections>
                         <outlet property="exhibitionDescriptionTextView" destination="ed2-tk-ieU" id="LGY-16-4ZG"/>
                         <outlet property="exhibitionNameTextField" destination="bOe-gz-m9J" id="j8o-c7-2xU"/>
+                        <outlet property="useCurrentLocationButton" destination="sva-Pb-96x" id="XHA-c9-j2G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8h2-8O-YSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
