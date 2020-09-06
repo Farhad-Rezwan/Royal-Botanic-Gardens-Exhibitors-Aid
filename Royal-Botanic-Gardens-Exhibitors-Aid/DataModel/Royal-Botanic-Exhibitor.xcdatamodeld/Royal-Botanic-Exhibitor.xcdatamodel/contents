@@ -13,7 +13,7 @@
         <attribute name="imageOfPlant" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="scientificName" optional="YES" attributeType="String"/>
-        <attribute name="yearDiscovered" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="yearDiscovered" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="exhibitions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exhibition" inverseName="plants" inverseEntity="Exhibition"/>
     </entity>
     <elements>

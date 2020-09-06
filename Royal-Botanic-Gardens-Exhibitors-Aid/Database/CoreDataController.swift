@@ -78,7 +78,7 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         saveContext()
     }
     
-    func addPlant(name: String, family: String, imageOfPlant: String, scientificName: String, yearDiscovered: Int16) -> Plant {
+    func addPlant(name: String, family: String, imageOfPlant: String, scientificName: String, yearDiscovered: Int64) -> Plant {
         let plant = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: persistentContainer.viewContext) as! Plant
         
         plant.name = name
@@ -88,6 +88,17 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         plant.yearDiscovered = yearDiscovered
 
         return plant
+    }
+    
+    func editPlant(oldPlant: Plant, family: String, scientificName: String) {
+//        oldPlant.name = newPlant.name
+        oldPlant.family = family
+        oldPlant.scientificName = scientificName
+        print(oldPlant.family! + family)
+        print(oldPlant.scientificName! + scientificName)
+        saveContext()
+
+        
     }
     
     func addExhibition(name: String, desc: String, exhibitionLat: Double, exhibitionLon: Double, icon: String) -> Exhibition {
@@ -220,7 +231,7 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
             allPlantsFetchResultsController = NSFetchedResultsController<Plant>(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
             
             allPlantsFetchResultsController?.delegate = self
-            
+
             do {
                 try allPlantsFetchResultsController?.performFetch()
             } catch {

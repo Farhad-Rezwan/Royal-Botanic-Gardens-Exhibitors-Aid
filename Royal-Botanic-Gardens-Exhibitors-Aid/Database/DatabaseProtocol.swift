@@ -38,7 +38,7 @@ protocol DatabaseProtocol: AnyObject {
     var defaultExhibition: [Exhibition] {get}
     
     func cleanup()
-    func addPlant(name: String, family: String, imageOfPlant: String, scientificName: String, yearDiscovered: Int16) -> Plant
+    func addPlant(name: String, family: String, imageOfPlant: String, scientificName: String, yearDiscovered: Int64) -> Plant
     func addExhibition(name: String, desc: String, exhibitionLat: Double, exhibitionLon: Double, icon: String) -> Exhibition
     func addPlantToExhibit(plant: Plant, exhibition: Exhibition) -> plantsAddableOrNot
     func deletePlant(plant: Plant)
@@ -46,6 +46,6 @@ protocol DatabaseProtocol: AnyObject {
     func removePlantFromExhibition(plant: Plant, exhibition: Exhibition)
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    
+    func editPlant(oldPlant: Plant, family: String, scientificName: String)
     func setDefaultExhibit(name: String)
 }

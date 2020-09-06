@@ -50,6 +50,7 @@ class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
             exhibitNameLabel.text = "name: \(exhibition!.name ?? "Nil")"
             exhibitDescriptionLabel.text = "name: \(exhibition!.desc ?? "Nil")"
             exhibitLocationLabel.text = "name: \(String(exhibition!.exhibitionLat))" + "name: \(String(exhibition!.exhibitionLat))"
+            plantsTableView.reloadData()
 
         }
     }

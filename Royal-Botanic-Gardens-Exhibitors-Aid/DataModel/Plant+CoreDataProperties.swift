@@ -2,7 +2,7 @@
 //  Plant+CoreDataProperties.swift
 //  Royal-Botanic-Gardens-Exhibitors-Aid
 //
-//  Created by Farhad Ullah Rezwan on 2/9/20.
+//  Created by Farhad Ullah Rezwan on 5/9/20.
 //  Copyright © 2020 Farhad Ullah Rezwan. All rights reserved.
 //
 //
@@ -21,7 +21,7 @@ extension Plant {
     @NSManaged public var imageOfPlant: String?
     @NSManaged public var name: String?
     @NSManaged public var scientificName: String?
-    @NSManaged public var yearDiscovered: Int16
+    @NSManaged public var yearDiscovered: Int64
     @NSManaged public var exhibitions: NSSet?
 
 }
