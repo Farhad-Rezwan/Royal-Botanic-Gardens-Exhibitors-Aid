@@ -39,6 +39,7 @@ protocol DatabaseProtocol: AnyObject {
     
     func cleanup()
     func addPlant(name: String, family: String, imageOfPlant: String, scientificName: String, yearDiscovered: Int64) -> Plant
+    func addPlantFromAPI(plantData: PlantData) -> Plant
     func addExhibition(name: String, desc: String, exhibitionLat: Double, exhibitionLon: Double, icon: String) -> Exhibition
     func addPlantToExhibit(plant: Plant, exhibition: Exhibition) -> plantsAddableOrNot
     func deletePlant(plant: Plant)

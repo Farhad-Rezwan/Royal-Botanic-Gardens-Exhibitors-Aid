@@ -14,7 +14,7 @@ class PlantTableViewCell: UITableViewCell {
     @IBOutlet weak var plantYearDiscoveredLabel: UILabel!
     @IBOutlet weak var plantFamilyLabel: UILabel!
     
-    @IBOutlet weak var plantImageUrlLabel: UILabel!
+    @IBOutlet weak var plantImage: CustomImageView!
     
     
     func setupPlant(plant: Plant) {
@@ -22,8 +22,30 @@ class PlantTableViewCell: UITableViewCell {
         plantScientificNameLabel.text = plant.scientificName
         plantYearDiscoveredLabel.text = "Year: \(plant.yearDiscovered)"
         plantFamilyLabel.text = plant.family
-        plantImageUrlLabel.text = plant.family
         
+        guard let plantImageStr = plant.imageOfPlant else {
+            plantImage.image = UIImage(named: "imageLoad")
+            return
+        }
+        
+        if let url = URL(string: convertHttpToHttps(url: plantImageStr)) {
+            plantImage.loadImage(from: url)
+            
+        }
+    }
+    
+    /// converts url to follow to HTTPS
+    /// - Parameter url: Could be any URL starting with HTTP or HTTPS
+    /// - Returns: returns URL with HTTPS
+    func convertHttpToHttps(url: String) -> String {
+        
+        // https://stackoverflow.com/a/50164951
+        let http = url
+        var comps = URLComponents(string: http)!
+        comps.scheme = "https"
+        let https = comps.string!
+        
+        return https
     }
 
     override func awakeFromNib() {

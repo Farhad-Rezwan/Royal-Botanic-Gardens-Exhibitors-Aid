@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 
 class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, DatabaseProtocol {
+   
+    
+
     
     var DEFAULT_EXHIBITION_NAME = "Default Exhibition"
     var listeners = MulticastDelegate<DatabaseListener>()
@@ -31,9 +34,8 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         super.init()
 
         if fetchAllExhibitions().count == 0 {
-            createDefaultEntries2()
+//            createDefaultEntries2()
         }
-        
         
         
     }
@@ -99,6 +101,20 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         saveContext()
 
         
+    }
+    
+    func addPlantFromAPI(plantData: PlantData) -> Plant {
+        let plant = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: persistentContainer.viewContext) as! Plant
+        
+        plant.name = plantData.name
+        plant.family = plantData.family
+        plant.scientificName = plantData.scientificName
+        plant.imageOfPlant = plantData.imageOfPlant
+        // need work
+        plant.yearDiscovered = plantData.yearDiscovered ?? 0
+        
+
+        return plant
     }
     
     func addExhibition(name: String, desc: String, exhibitionLat: Double, exhibitionLon: Double, icon: String) -> Exhibition {
@@ -275,7 +291,9 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         return plants
     }
     
-    /// Adds default entries for the exhibitions
+    
+    
+//    / Adds default entries for the exhibitions
     func createDefaultEntries2() {
         let p1 = addPlant(name: "Plant A", family: "Plant Family A", imageOfPlant: "Imapge of Plant A", scientificName: "Scientific Name of Plant A", yearDiscovered: 1994)
         let p2 = addPlant(name: "Plant B", family: "Plant Family B", imageOfPlant: "Imapge of Plant B", scientificName: "Scientific Name of Plant B", yearDiscovered: 1995)
@@ -300,7 +318,7 @@ class CoreDataController: NSObject, NSFetchedResultsControllerDelegate, Database
         let ex8 = addExhibition(name: "Exhibition h", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
         let ex9 = addExhibition(name: "Exhibition i", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
         let ex10 = addExhibition(name: "Exhibition j", desc: "Description A", exhibitionLat: 12.121212, exhibitionLon: 32.121212, icon: "Icon A")
-        
+
         let _ = addPlantToExhibit(plant: p1, exhibition: ex1)
         let _ = addPlantToExhibit(plant: p2, exhibition: ex1)
         let _ = addPlantToExhibit(plant: p3, exhibition: ex1)
