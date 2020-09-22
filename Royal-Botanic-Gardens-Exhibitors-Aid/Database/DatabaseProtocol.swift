@@ -40,13 +40,13 @@ protocol DatabaseProtocol: AnyObject {
     func cleanup()
     func addPlant(name: String, family: String, imageOfPlant: String, scientificName: String, yearDiscovered: Int64) -> Plant
     func addPlantFromAPI(plantData: PlantData) -> Plant
-    func addExhibition(name: String, desc: String, exhibitionLat: Double, exhibitionLon: Double, icon: String) -> Exhibition
+    func addExhibition(name: String, desc: String, exhibitionLat: Double, exhibitionLon: Double, icon: String) -> (Exhibition, Bool)
     func addPlantToExhibit(plant: Plant, exhibition: Exhibition) -> plantsAddableOrNot
     func deletePlant(plant: Plant)
     func deleteExhibition(exhibition: Exhibition)
     func removePlantFromExhibition(plant: Plant, exhibition: Exhibition)
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func editPlant(oldPlant: Plant, family: String, scientificName: String)
+    func editPlant(oldPlant: Plant, name: String, family: String, scientificName: String, yearDiscovered: Int64)
     func setDefaultExhibit(name: String)
 }

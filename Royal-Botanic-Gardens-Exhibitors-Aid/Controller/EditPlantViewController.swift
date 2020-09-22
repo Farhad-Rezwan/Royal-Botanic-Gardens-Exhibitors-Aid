@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Class for editing plants
 class EditPlantViewController: UIViewController {
     
     var plant:Plant?
@@ -35,10 +36,17 @@ class EditPlantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showPlantNameLable.text = plant?.name
-        showScientificNameLabel.text = plant?.scientificName
+        showPlantNameLable.text = "Plant name: \(plant?.name ?? "no name")"
+        showScientificNameLabel.text = "Scientific Name: \(plant?.scientificName ?? "no scientific name")"
         showYearDiscoveredLabel.text = "\(plant?.yearDiscovered ?? 0)"
-        showFamilyNameLabel.text = plant?.family
+        showFamilyNameLabel.text = "Family: \(plant?.family ?? "no family")"
+        
+        editPlantNameTextField.text = plant?.name ?? "no name"
+        editScientificNameTextField.text = plant?.scientificName ?? "no scientific name"
+        editYearDiscoveredTextField.text = "\(plant?.yearDiscovered ?? 0)"
+        editFamilyNameTextField.text = plant?.family ?? "no family"
+        
+        
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
@@ -46,14 +54,62 @@ class EditPlantViewController: UIViewController {
     }
         
     @IBAction func editSubmitButtonAction(_ sender: Any) {
-        let familyName = editFamilyNameTextField.text
-        let scientificName = editScientificNameTextField.text
+        var errorMessage = "Please ensure all fields are filled: \n"
         
-//        newPlant.name = name
+        guard let yearDiscovered: Int = Int(editYearDiscoveredTextField.text ?? "0") else {
+            if editYearDiscoveredTextField.text == "" {
+                errorMessage += "-must provide year\n"
+            }
+            errorMessage += "-must provide proper year\n"
+            displayMessage(title: "Not all fields filled", message: errorMessage)
+            return
+        }
+        
+        
+        if editPlantNameTextField.text != "" && editFamilyNameTextField.text != "" && editScientificNameTextField.text != "" && yearDiscovered > 0 && yearDiscovered < 2020 {
+            let name = editPlantNameTextField.text
+            let familyName = editFamilyNameTextField.text
+            let scientificName = editScientificNameTextField.text
+            
+            
+            
+            
+            
+            databaseController?.editPlant(oldPlant: plant!, name: name!, family: familyName!, scientificName: scientificName!, yearDiscovered: Int64(yearDiscovered))
+            let _ = editDelegate?.sendPlantToEdit(plant: plant!)
+            navigationController?.popViewController(animated: true)
+            
+            return
+        }
+        
 
-        databaseController?.editPlant(oldPlant: plant!, family: familyName!, scientificName: scientificName!)
-        editDelegate?.sendPlantToEdit(plant: plant!)
-        navigationController?.popViewController(animated: true)
-        return
+        if editPlantNameTextField.text == "" {
+            errorMessage += "-must provide name\n"
+        }
+
+        if editFamilyNameTextField.text == "" {
+            errorMessage += "-must provide family\n"
+        }
+
+        if editScientificNameTextField.text == "" {
+            errorMessage += "-must provide scientific name\n"
+        }
+        
+        if yearDiscovered <= 0 || yearDiscovered > 2020{
+            errorMessage += "-must provide proper year\n"
+        }
+        
+        displayMessage(title: "Not all fields filled", message: errorMessage)
+        
+    }
+    
+    /// Displays Alert for invalid infomation
+    /// - Parameters:
+    ///   - title: the title of the alert
+    ///   - message: message of the allert
+    func displayMessage(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }

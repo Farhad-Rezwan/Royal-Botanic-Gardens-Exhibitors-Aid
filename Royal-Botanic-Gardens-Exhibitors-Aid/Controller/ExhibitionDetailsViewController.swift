@@ -7,20 +7,24 @@
 //
 
 import UIKit
+import MapKit
 
+/// class for exhibition details
 class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
     
     var defaultExhibitionName: String = ""
     
     var listenerType: ListenerType = .all
     
+    var locationAnnotation: LocationAnnotation?
     
     
-    @IBOutlet weak var exhibitNameLabel: UILabel!
+    
     @IBOutlet weak var exhibitDescriptionLabel: UILabel!
-    @IBOutlet weak var exhibitLocationLabel: UILabel!
-    
+    @IBOutlet weak var exhibitionIconImageView: UIImageView!
+    @IBOutlet weak var exhibitionIconBackgroundView: UIView!
     @IBOutlet weak var plantsTableView: UITableView!
+    @IBOutlet weak var showLocationButtonUI: UIButton!
     
     var currentPlant: [Plant] = []
     var exhibition: Exhibition?
@@ -30,6 +34,8 @@ class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
     
 
     override func viewDidLoad() {
+        title = exhibition?.name
+        
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -39,7 +45,20 @@ class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
         plantsTableView.dataSource = self
         
         
-        
+        // setting UI
+        exhibitionIconBackgroundView.layer.borderWidth = 2.0
+        exhibitionIconBackgroundView.layer.cornerRadius = exhibitionIconBackgroundView.bounds.height / 2
+        exhibitionIconBackgroundView.layer.borderColor = UIColor.systemGroupedBackground.cgColor
+        showLocationButtonUI.layer.borderWidth = 2.0
+        showLocationButtonUI.layer.borderColor = UIColor.systemGroupedBackground.cgColor
+        showLocationButtonUI.layer.cornerRadius = 20
+        exhibitDescriptionLabel.layer.cornerRadius = 10
+        plantsTableView.layer.cornerRadius = 20
+        exhibitDescriptionLabel.layer.borderWidth = 1.0
+        plantsTableView.layer.borderWidth = 1.0
+        exhibitDescriptionLabel.layer.borderColor = UIColor.systemGroupedBackground.cgColor
+        plantsTableView.layer.borderColor = UIColor.systemGroupedBackground.cgColor
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +66,12 @@ class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
         
         
         if exhibition != nil {
-            exhibitNameLabel.text = "name: \(exhibition!.name ?? "Nil")"
-            exhibitDescriptionLabel.text = "name: \(exhibition!.desc ?? "Nil")"
-            exhibitLocationLabel.text = "name: \(String(exhibition!.exhibitionLat))" + "name: \(String(exhibition!.exhibitionLat))"
+            exhibitDescriptionLabel.text = "Summary: \(exhibition!.desc ?? "Nil")"
+            
+            // setting the icon
+            let newIcon = Icon(imageIconName: exhibition!.icon ?? "imageLoad")
+            exhibitionIconImageView.image = UIImage(named: newIcon.imageIconName)
+            exhibitionIconBackgroundView.backgroundColor = newIcon.iconTintColor
             plantsTableView.reloadData()
 
         }
@@ -60,6 +82,9 @@ class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
     }
     
     
+    @IBAction func showLocation(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     
     func onExhibitionPlantsChange(change: DatabaseChange, exhibitionPlants: [Plant]) {
         currentPlant = exhibitionPlants
@@ -70,7 +95,6 @@ class ExhibitionDetailsViewController: UIViewController, DatabaseListener {
     }
     
     func onExhibitionChange(change: DatabaseChange, exhibitions: [Exhibition]) {
-        exhibition = exhibitions[9]
         databaseController?.setDefaultExhibit(name: exhibition!.name ?? "")
         defaultExhibitionName = "\(exhibition!.name ?? "")"
         print(defaultExhibitionName)
@@ -102,6 +126,8 @@ extension ExhibitionDetailsViewController: UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = storyboard?.instantiateViewController(identifier: "showPlanet") as! PlantDetailsViewController
         viewController.plant = currentPlant[indexPath.row]
+        
+        
         navigationController?.pushViewController(viewController, animated: true)
         
     }

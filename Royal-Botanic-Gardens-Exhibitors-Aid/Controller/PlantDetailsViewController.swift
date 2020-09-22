@@ -8,34 +8,18 @@
 
 import UIKit
 
-class PlantDetailsViewController: UIViewController, EditPlantDelegate, DatabaseListener {
-    var listenerType: ListenerType = .all
-    
-    func onExhibitionPlantsChange(change: DatabaseChange, exhibitionPlants: [Plant]) {
-        
-    }
-    
-    func onPlantListChange(change: DatabaseChange, plants: [Plant]) {
-        
-    }
-    
-    func onExhibitionChange(change: DatabaseChange, exhibitions: [Exhibition]) {
-        
-    }
-    
-    
+/// class for plant details
+class PlantDetailsViewController: UIViewController, EditPlantDelegate{
+
+
     
 
-    weak var databaseController: DatabaseProtocol?
-    
-    
-//    weak var editPlantDelegate: EditPlantDelegate?
-    
     @IBOutlet weak var plantNameLabel: UILabel!
     @IBOutlet weak var plantScientificNameLabel: UILabel!
     @IBOutlet weak var plantYearDiscoveredLabel: UILabel!
     @IBOutlet weak var plantFamilyLabel: UILabel!
-    @IBOutlet weak var plantImageURLLabel: UILabel!
+
+    @IBOutlet weak var customInagePlant: CustomImageView!
     
     var plant: Plant?
     
@@ -48,28 +32,51 @@ class PlantDetailsViewController: UIViewController, EditPlantDelegate, DatabaseL
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        databaseController = appDelegate.databaseController
-        
+        loadData()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadData()
+    }
+    
+    /// loads data so that the information is consistent, instead of using listener
+    func loadData() {
         name = plant!.name!
         scientificName = plant?.scientificName
         yearDiscovered = plant?.yearDiscovered
         family = plant?.family
         imageURL = plant?.imageOfPlant
         
-        plantNameLabel.text = name
-        plantScientificNameLabel.text = scientificName
-        plantFamilyLabel.text = family
-        plantYearDiscoveredLabel.text = "year: \(yearDiscovered!)"
-        plantImageURLLabel.text = imageURL
-        print(plant!)
-
+        plantNameLabel.text = "Name: \(name ?? "no name set")"
+        plantScientificNameLabel.text = "Scientific Name: \"\(scientificName ?? "no scientific name given")\""
+        plantFamilyLabel.text = "Family: \"\(family ?? "no family discovered")\""
+        plantYearDiscoveredLabel.text = "Year Discovered: \(String(yearDiscovered!))"
+        
+        if let url = URL(string: convertHttpToHttps(url: imageURL ?? " ")) {
+            customInagePlant.loadImage(from: url)
+            
+        }
+    }
+    
+    /// converts url to follow to HTTPS
+    /// - Parameter url: Could be any URL starting with HTTP or HTTPS
+    /// - Returns: returns URL with HTTPS
+    func convertHttpToHttps(url: String) -> String {
+        
+        // https://stackoverflow.com/a/50164951
+        let http = url
+        var comps = URLComponents(string: http)!
+        comps.scheme = "https"
+        let https = comps.string!
+        
+        return https
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEditPlantScreen" {
-//            editPlantDelegate?.sendPlantToEdit(plant: plant!)
+            
             let destination = segue.destination as! EditPlantViewController
             destination.plant = plant
             destination.editDelegate = self

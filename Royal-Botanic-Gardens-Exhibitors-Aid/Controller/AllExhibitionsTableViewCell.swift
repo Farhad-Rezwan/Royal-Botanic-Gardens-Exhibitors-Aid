@@ -8,17 +8,20 @@
 
 import UIKit
 
+/// Class for exhibition table view cell
 class AllExhibitionsTableViewCell: UITableViewCell {
-    @IBOutlet weak var exhibitionCellIconLabel: UILabel!
+
+    @IBOutlet weak var exhibitionImage: UIImageView!
+    
     @IBOutlet weak var exhibitionCellNameLabel: UILabel!
     @IBOutlet weak var exhibitionCellDescriptionLabel: UILabel!
     
 
     func setupExhibition(exhibition: Exhibition) {
         
-        exhibitionCellIconLabel.text = exhibition.name
-        exhibitionCellNameLabel.text = exhibition.icon
-        exhibitionCellDescriptionLabel.text = exhibition.description
+        exhibitionImage.image = UIImage(named: exhibition.icon ?? "imageLoad")
+        exhibitionCellNameLabel.text = exhibition.name
+        exhibitionCellDescriptionLabel.text = exhibition.desc
 
     }
     override func awakeFromNib() {

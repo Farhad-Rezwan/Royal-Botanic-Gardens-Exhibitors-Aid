@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Protocol to send plant for edit.
 protocol EditPlantDelegate: AnyObject {
     func sendPlantToEdit(plant: Plant) -> Plant
 }

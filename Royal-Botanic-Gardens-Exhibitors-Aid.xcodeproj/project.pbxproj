@@ -25,15 +25,20 @@
 		FC67749C2505152200B4741F /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67749B2505152200B4741F /* LocationAnnotation.swift */; };
 		FC68CF2D2514B47100D0E30E /* VolumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68CF2C2514B47100D0E30E /* VolumeData.swift */; };
 		FC68CF342514E88400D0E30E /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68CF332514E88400D0E30E /* CustomImageView.swift */; };
+		FC8286A025196A6F00F2A8FD /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC82869F25196A6F00F2A8FD /* Icon.swift */; };
 		FC831BC124F0817500221C2D /* ExhibitionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC831BC024F0817500221C2D /* ExhibitionDetailsViewController.swift */; };
 		FC831BC824F08AA700221C2D /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC831BC724F08AA700221C2D /* PlantTableViewCell.swift */; };
 		FC831BCA24F09F3900221C2D /* PlantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC831BC924F09F3900221C2D /* PlantDetailsViewController.swift */; };
+		FC96C657251946DF00878538 /* ExhibitionPlantsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96C656251946DF00878538 /* ExhibitionPlantsCollectionViewCell.swift */; };
+		FC96C65A2519667B00878538 /* SelectExhibitionIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96C6592519667B00878538 /* SelectExhibitionIconViewController.swift */; };
 		FCA325C824F0FFF3002AFF92 /* AllExhibitionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA325C724F0FFF3002AFF92 /* AllExhibitionsTableViewCell.swift */; };
 		FCA325CA24F111D9002AFF92 /* AllExhibitionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA325C924F111D9002AFF92 /* AllExhibitionsTableViewController.swift */; };
 		FCB2C9DA25030773008D55FC /* EditPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2C9D925030773008D55FC /* EditPlantViewController.swift */; };
 		FCB8994124FF7C7B00BAC55A /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8994024FF7C7B00BAC55A /* DatabaseProtocol.swift */; };
 		FCB8994324FF7E6800BAC55A /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8994224FF7E6800BAC55A /* MulticastDelegate.swift */; };
 		FCB8994524FF7EB600BAC55A /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8994424FF7EB600BAC55A /* CoreDataController.swift */; };
+		FCD8A0712518C9C90063574D /* SelectCustomLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8A0702518C9C90063574D /* SelectCustomLocation.swift */; };
+		FCDF1F992519677A005C15AF /* SelectExhibitionIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDF1F982519677A005C15AF /* SelectExhibitionIconCollectionViewCell.swift */; };
 		FCEC4E972504C84800EC050A /* CreateExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEC4E962504C84800EC050A /* CreateExhibitionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,15 +63,20 @@
 		FC67749B2505152200B4741F /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		FC68CF2C2514B47100D0E30E /* VolumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeData.swift; sourceTree = "<group>"; };
 		FC68CF332514E88400D0E30E /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		FC82869F25196A6F00F2A8FD /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		FC831BC024F0817500221C2D /* ExhibitionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionDetailsViewController.swift; sourceTree = "<group>"; };
 		FC831BC724F08AA700221C2D /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
 		FC831BC924F09F3900221C2D /* PlantDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewController.swift; sourceTree = "<group>"; };
+		FC96C656251946DF00878538 /* ExhibitionPlantsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionPlantsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC96C6592519667B00878538 /* SelectExhibitionIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExhibitionIconViewController.swift; sourceTree = "<group>"; };
 		FCA325C724F0FFF3002AFF92 /* AllExhibitionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExhibitionsTableViewCell.swift; sourceTree = "<group>"; };
 		FCA325C924F111D9002AFF92 /* AllExhibitionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExhibitionsTableViewController.swift; sourceTree = "<group>"; };
 		FCB2C9D925030773008D55FC /* EditPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlantViewController.swift; sourceTree = "<group>"; };
 		FCB8994024FF7C7B00BAC55A /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		FCB8994224FF7E6800BAC55A /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		FCB8994424FF7EB600BAC55A /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		FCD8A0702518C9C90063574D /* SelectCustomLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCustomLocation.swift; sourceTree = "<group>"; };
+		FCDF1F982519677A005C15AF /* SelectExhibitionIconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExhibitionIconCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCEC4E962504C84800EC050A /* CreateExhibitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExhibitionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +149,7 @@
 				FC3FE2212503B18F00E5AA91 /* Plant+CoreDataClass.swift */,
 				FC3FE2222503B18F00E5AA91 /* Plant+CoreDataProperties.swift */,
 				FC6686CA24FF635600EF71C9 /* Royal-Botanic-Exhibitor.xcdatamodeld */,
+				FC82869F25196A6F00F2A8FD /* Icon.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -167,6 +178,10 @@
 				FCEC4E962504C84800EC050A /* CreateExhibitionViewController.swift */,
 				FC6774992505150500B4741F /* MapViewController.swift */,
 				FC67749B2505152200B4741F /* LocationAnnotation.swift */,
+				FCD8A0702518C9C90063574D /* SelectCustomLocation.swift */,
+				FC96C656251946DF00878538 /* ExhibitionPlantsCollectionViewCell.swift */,
+				FC96C6592519667B00878538 /* SelectExhibitionIconViewController.swift */,
+				FCDF1F982519677A005C15AF /* SelectExhibitionIconCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -253,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCB8994124FF7C7B00BAC55A /* DatabaseProtocol.swift in Sources */,
+				FC96C657251946DF00878538 /* ExhibitionPlantsCollectionViewCell.swift in Sources */,
 				FCA325CA24F111D9002AFF92 /* AllExhibitionsTableViewController.swift in Sources */,
+				FCDF1F992519677A005C15AF /* SelectExhibitionIconCollectionViewCell.swift in Sources */,
 				FC1A753725136F6C00D647AD /* ExistingPlantsViewController.swift in Sources */,
 				FCB8994524FF7EB600BAC55A /* CoreDataController.swift in Sources */,
 				FC04B19624ED220B00007216 /* AppDelegate.swift in Sources */,
@@ -267,7 +284,10 @@
 				FC3FE2252503B18F00E5AA91 /* Plant+CoreDataClass.swift in Sources */,
 				FC68CF2D2514B47100D0E30E /* VolumeData.swift in Sources */,
 				FC3FE2232503B18F00E5AA91 /* Exhibition+CoreDataClass.swift in Sources */,
+				FCD8A0712518C9C90063574D /* SelectCustomLocation.swift in Sources */,
+				FC8286A025196A6F00F2A8FD /* Icon.swift in Sources */,
 				FC831BC124F0817500221C2D /* ExhibitionDetailsViewController.swift in Sources */,
+				FC96C65A2519667B00878538 /* SelectExhibitionIconViewController.swift in Sources */,
 				FC831BCA24F09F3900221C2D /* PlantDetailsViewController.swift in Sources */,
 				FCB8994324FF7E6800BAC55A /* MulticastDelegate.swift in Sources */,
 				FCEC4E972504C84800EC050A /* CreateExhibitionViewController.swift in Sources */,

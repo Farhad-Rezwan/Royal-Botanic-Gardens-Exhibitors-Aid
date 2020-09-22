@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 
+/// table view controller to store all exhibition details, is searchable and sortable
 class AllExhibitionsTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener{
     
     weak var mapViewController: MapViewController?
@@ -24,20 +25,19 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
     var tempExhibitions: [Exhibition] = []
     
     weak var databaseController: DatabaseProtocol?
-    var listenerType: ListenerType = .all
+    var listenerType: ListenerType = .exhibition
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        loadLocation()
+        
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
-        tempExhibitions = exhibitions
-        
+
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -46,12 +46,14 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
         
         definesPresentationContext = true
         
+        
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,6 +61,7 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
         databaseController?.removeListener(listener: self)
     }
     
+    /// once search results are updated
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text?.lowercased() else {
             return
@@ -73,51 +76,39 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
             })
         } else {
             tempExhibitions = exhibitions
+            
         }
-
+        
+        // to make sure that afer searching the lcoation is perfectly annoted
+        loadLocation(exhibitions: tempExhibitions)
         tableView.reloadData()
-        
-        
     }
     
    
     
-    func loadLocation() {
-        var location = LocationAnnotation(title: "Monash University - Caulfield", subtitle: "The Caulfield campus of the University", lat: -37.877623, lon: 145.045374)
-        locationList.append(location)
+    /// Loads locations with respect to displaying in the table view.
+    /// - Parameter exhibitions: Temporary exhibitions to show, depending on search results or all exhibitions before searching any.
+    func loadLocation(exhibitions: [Exhibition]) {
         
-        mapViewController?.mapView.addAnnotation(location)
+        // to make sure that locations are not not duplicated
+        locationList.removeAll()
         
-        location = LocationAnnotation(title: "Monash University - Clayton", subtitle: "The Clayton campus of the University", lat: -37.9105238, lon: 145.1362182)
-        
-        locationList.append(location)
-        mapViewController?.mapView.addAnnotation(location)
+        for item in exhibitions {
+            let location = LocationAnnotation(title: item.name ?? "No name", subtitle: item.desc ?? "No Description", lat: item.exhibitionLat, lon: item.exhibitionLon, imageIcon: item.icon ?? " ", storeExhibition: item)
+            locationList.append(location)
+            mapViewController?.mapView.addAnnotation(location)
+        }
     }
     
     
     
-//    func createExhibition() -> [Exhibition] {
-//        var tempExhibitions: [Exhibition] = []
-//
-//        let exhibition1 = Exhibition(name: "I dont care exhibition", description: "I realy dont care", icon: "No Icon")
-//        let exhibition2 = Exhibition(name: "You dont care exhibition", description: "You realy dont care", icon: "Not sure ICON")
-//        let exhibition3 = Exhibition(name: "We dont care exhibition", description: "We realy dont care", icon: "Unknown ICON")
-//
-//        tempExhibitions.append(contentsOf: [exhibition1, exhibition2, exhibition3])
-//
-//
-//        return tempExhibitions
-//    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return tempExhibitions.count
     }
     
@@ -132,8 +123,10 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
         return exhibitionCell
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        mapViewController?.focusOn(annotation: self.locationList[indexPath.row])
+        mapViewController?.focusOn(annotation: self.locationList[indexPath.row], regionInMeters: 200)
         
         if let mapVC = mapViewController {
             splitViewController?.showDetailViewController(mapVC, sender: nil)
@@ -142,8 +135,11 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
     
     
     func onExhibitionChange(change: DatabaseChange, exhibitions: [Exhibition]) {
-           self.exhibitions = exhibitions
-           updateSearchResults(for: navigationItem.searchController!)
+        self.exhibitions = exhibitions
+        tempExhibitions = exhibitions
+        
+        // Always called so that, consistency of all result verses searched results are maintained
+        updateSearchResults(for: navigationItem.searchController!)
        }
        
        func onExhibitionPlantsChange(change: DatabaseChange, exhibitionPlants: [Plant]) {
@@ -154,11 +150,6 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
            // do nothing
        }
     
-    
-    
-    
-    
-    
     // MARK: - New Location Delegate Function
     
     func locationAnnotationAdded(annotation: LocationAnnotation) {
@@ -166,60 +157,5 @@ class AllExhibitionsTableViewController: UITableViewController, UISearchResultsU
         tableView.insertRows(at: [IndexPath(row: locationList.count - 1, section: 0)], with: .automatic)
         mapViewController?.mapView.addAnnotation(annotation)
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

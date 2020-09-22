@@ -8,9 +8,10 @@
 
 import UIKit
 
+/// Searches plants from the API
 class SearchPlantsViewController: UIViewController, UISearchBarDelegate {
     
-    let CELL_CARD = "plantCell"
+    let CELL_PLANT_API = "plantCell"
     let REQUEST_STRING = "https://trefle.io/api/v1/plants/search?token=3BaewBFyWrnF5TSE3pqwotZMns2uW31gU1J29DaEGOs&q="
     var indicator = UIActivityIndicatorView()
     var newPlant = [PlantData]()
@@ -57,6 +58,7 @@ class SearchPlantsViewController: UIViewController, UISearchBarDelegate {
         
     }
     
+    /// makes request 
     func requestPlant(plantName: String) {
         let searchString = REQUEST_STRING + plantName
         let jsonURL = URL(string: searchString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
@@ -98,7 +100,7 @@ extension SearchPlantsViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_CARD, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_PLANT_API, for: indexPath)
         let plant = newPlant[indexPath.row]
         
         cell.textLabel?.text = plant.name

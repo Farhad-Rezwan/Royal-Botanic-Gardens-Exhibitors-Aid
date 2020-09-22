@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// class for each plant cell
 class PlantTableViewCell: UITableViewCell {
     @IBOutlet weak var plantNameLabel: UILabel!
     @IBOutlet weak var plantScientificNameLabel: UILabel!
@@ -17,6 +18,7 @@ class PlantTableViewCell: UITableViewCell {
     @IBOutlet weak var plantImage: CustomImageView!
     
     
+    /// helps to properly set plant
     func setupPlant(plant: Plant) {
         plantNameLabel.text = plant.name
         plantScientificNameLabel.text = plant.scientificName
@@ -50,13 +52,25 @@ class PlantTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    /// helps to keep table view controller properly selected
+    override var isSelected: Bool{
+        willSet{
+            super.isSelected = newValue
+            if newValue
+            {
+                self.layer.borderWidth = 1.0
+                self.layer.cornerRadius = self.bounds.height / 2
+                self.layer.borderColor = UIColor.gray.cgColor
+            }
+            else
+            {
+                self.layer.borderWidth = 0.0
+                self.layer.cornerRadius = 0.0
+            }
+        }
     }
 
 }
